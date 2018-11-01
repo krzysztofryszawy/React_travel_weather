@@ -1,0 +1,16 @@
+.HeaderInfo {
+    background-color: white;
+    font-size: 2em;
+    color: black;
+    z-index: 9999;
+    border: 2px solid black;
+    padding: .5em;
+    left: 10vw;
+    top: 2vh;
+    display: inline-block;
+    position: fixed;
+    width: 80%;
+    box-sizing: border-box;
+    opacity: .7;
+    /*    min-width: 400px;*/
+}
