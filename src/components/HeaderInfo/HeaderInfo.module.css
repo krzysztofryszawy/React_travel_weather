@@ -11,6 +11,8 @@
     position: fixed;
     width: 80%;
     box-sizing: border-box;
-    opacity: .7;
     /*    min-width: 400px;*/
+        background-image: url(../../assets/images/vertical-waves.png);
+    border-radius: 15px;
+
 }

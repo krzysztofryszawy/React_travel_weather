@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-    background-image: url(./assets/images/rodion-kutsaev-760882-unsplash_1920.jpg);
+    background-image: url(./assets/images/simon-rae-732820-unsplash_1920.jpg);
     background-repeat: no-repeat;
     background-position: center top;
     background-size: cover;
@@ -10,6 +10,6 @@
         min-width: 400px;
     font-family: 'Sorts Mill Goudy', serif;
     background-attachment: fixed;
-
+    
 
 }

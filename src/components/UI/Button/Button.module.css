@@ -1,0 +1,57 @@
+.Button {
+    outline: none;
+    border: 2px dashed orangered;
+    color: black;
+    cursor: pointer;
+    font: inherit;
+    font-size: 1em;
+    text-align: center;
+/*    min-height: 2em;*/
+    padding: .5em;
+    margin: .5em;
+    border-radius: 5px;
+
+}
+
+/*
+.Button:first-of-type {
+    margin-left: 0;
+    padding-left: 0;
+}
+*/
+
+.Proceed {
+    background-color: yellow;
+    cursor: pointer;
+}
+.Proceed:hover {
+    opacity: .2;
+}
+
+.Cancel {
+    background-color: darkred;
+    cursor: pointer;
+}
+.Cancel:hover {
+    background-color: red
+}
+
+.Disabled {
+    background-color: black;
+    color: gray;
+    cursor: pointer;
+        border:  dashed gray;
+}
+.Disabled:hover {
+    background-color: yellow;
+    color: black;
+    border:  dashed orange;
+        opacity: .2;
+
+}
+
+
+@media (max-width: 800px) {
+    .Button {   padding: .2em; margin: .3em   }
+    
+}

@@ -1,5 +1,41 @@
 .SingleCityForecast {
-    background-color: darkseagreen;
-    padding: 1em;
-    margin: 1px dashed black;
+/*    font-family: 'Montserrat Alternates', sans-serif;*/
+/*    font-family: 'Unica One', cursive;*/
+    font-family: 'Julius Sans One', sans-serif;
+    background-color:white;
+    border-bottom: 1px solid gainsboro;
+    padding-bottom: .5em;
+    display: flex;
+    flex-direction: row;
+    align-items:stretch;
+    justify-content:space-between;
+    
+}
+
+.SingleCityForecast:hover {
+    background-color: beige;
+}
+
+.singleCityCountry {
+/*    background-color: orange;*/
+    padding: .5em;
+    font-weight: bolder;
+    color: #b89a6a;
+}
+
+
+
+.singleDate {
+    padding: .5em
+}
+
+
+.singleTemperature {
+    padding: .5em
+}
+
+
+.singleConditionID {
+/*    background-color: darkorange;*/
+    padding: .5em
 }
