@@ -1,0 +1,42 @@
+/*
+.DialogBox {
+    background-color: beige;
+    width: 100%;
+    min-height: 20vh;    
+    position: fixed;
+    left: 0;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    box-sizing: border-box;
+    transition: .4s ease-out;
+}
+*/
+.Backdrop {
+    position: fixed;
+    top: 0;
+    z-index: 99999
+}
+
+.background {
+    background-color: rgba(0,0,0,0.8);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+}
+
+.inputBox {
+    background-color: beige;
+    width: 60vw;
+    min-width: 400px;
+    height: 20vh;
+    border: 2px solid black;
+    padding: 2em;
+    box-sizing: border-box;
+    margin-top: 10em;
+    border-radius: 15px;
+    z-index: 99999;
+    position: relative;
+}
