@@ -22,6 +22,7 @@ class cumulativeForecast extends Component {
         backdrop: false,
         cityName: 'krakow',
         listOfDatabaseNames: [],
+        indexCities: 0,
     }
 
 
@@ -31,14 +32,37 @@ class cumulativeForecast extends Component {
     getSingleCityDatabase(cityName_param) {
         this.setState({loading: true})
         let weatherURL = `local_database_${cityName_param}.json`
+
+        //setting unique name for each city
+        cityName_param = `${cityName_param}${this.state.indexCities}`
         return new Promise((resolve, reject) => {
             axios.get(weatherURL)
                 .then(response => {
-                    let cityToAdd  = {databaseName: cityName_param+'Database', startDate: this.state.clickedCityData}
+                
+        //creating list of choosen cities - saving database name for them, pushing to database one by one
+                    let cityToAdd  = {
+                        databaseName: cityName_param+'Database',
+                        startDate: this.state.clickedCityData, 
+                        endDate: 1920000000}                    
                     if (cityToAdd.startDate == undefined) {cityToAdd.startDate= Date.now()/1000}
-                    this.state.listOfDatabaseNames.push(cityToAdd)
-//console.log(cityToAdd)
-                    this.setState({[cityName_param+'Database']: response.data}, () => resolve())            
+                
+
+                
+                
+
+                this.state.listOfDatabaseNames.push(cityToAdd)
+                
+
+        //setting end date for clicked city, maping through database setted above 
+let test = this.state.listOfDatabaseNames.map(element => {
+        if (element.databaseName == this.state.clickedDatabaseName) {
+                element.endDate = this.state.clickedCityData
+            }
+            return element
+})
+
+                
+                    this.setState({[cityName_param+'Database']: response.data, indexCities: this.state.indexCities + 1}, () => resolve())
                 })
                 .catch(error => {
                     reject(error)
@@ -46,10 +70,20 @@ class cumulativeForecast extends Component {
         })
     }
 
-//gets date of clicked element
-    getActualClickedData = (clickedData, singleCityName) => {
-        this.setState({clickedCityData: clickedData})
-//        console.log(clickedData, singleCityName)
+//gets date of clicked element (key unikalny identyfikator)
+    getActualClickedDataHandler = (clickedData, singleCityName, clickedDatabaseName) => {
+        this.setState({clickedCityData: clickedData, clickedCityName: singleCityName.toLowerCase(), clickedDatabaseName: clickedDatabaseName})
+        
+
+//experimental - removing cities, which starts later then clicked startDate
+const test2 = this.state.listOfDatabaseNames.filter((el) => {
+        if (el.startDate < clickedData)
+                        return el.startDate < clickedData
+                    })
+this.setState({listOfDatabaseNames: test2})
+
+
+
         this.showBackdrop()
     }
 
@@ -83,24 +117,22 @@ class cumulativeForecast extends Component {
                                 </div>
 
             if (this.state.loading) return <Spinner/>
-                        
-            if (!this.state[this.state.cityName+'Database']) return <Spinner/>
+
+//proceed if there is initial database loaded NEED TO ADD DYNAMIC SETTED DEFAULT CITY NAME!!!!!!!!!
+            if (!this.state[`krakow0Database`]) return <Spinner/>
     
             let commonDatabase = this.state.listOfDatabaseNames.map(singleCityElement => {
                     let singleCityDatabase = (this.state[singleCityElement.databaseName])
-
-//filtered by starting date
-const singleCityDatabase2 = singleCityDatabase.list.filter((el) => {
-    return el.dt >= singleCityElement.startDate;
-});
-//console.log(singleCityDatabase)
-//console.log(singleCityDatabase2)
-                
+//below filtered by starting & ending date defined before
+                    const singleCityDatabaseFiltered = singleCityDatabase.list.filter((el) => {
+                        return el.dt >= singleCityElement.startDate && el.dt < singleCityElement.endDate;
+                    });                
                     return(
-                        singleCityDatabase2.map(singleObject => {
+                        singleCityDatabaseFiltered.map((singleObject, mapIndex) => {
                                             return (
                                                 <SingleCityForecast
                                                       key={singleObject.dt+singleCityDatabase.city.name}
+                                                      databaseName={singleCityElement.databaseName}
                                                       dt={singleObject.dt}
                                                       dt_txt={singleObject.dt_txt}
                                                       temperature={singleObject.main.temp}
@@ -109,7 +141,8 @@ const singleCityDatabase2 = singleCityDatabase.list.filter((el) => {
                                                       conditionID={singleObject.weather[0].id}
                                                       singleCityName={singleCityDatabase.city.name}
                                                       singleCityCountry={singleCityDatabase.city.country}
-                                                      getActualClickedData={this.getActualClickedData}
+                                                      getActualClickedDataHandler={this.getActualClickedDataHandler}
+                                                      color={mapIndex % 2 == 0 ? true : false}
                                                       >
                                                 </SingleCityForecast>
                                             )
