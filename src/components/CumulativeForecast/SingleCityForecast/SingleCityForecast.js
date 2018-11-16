@@ -14,10 +14,11 @@ import styles from './SingleCityForecast.module.css';
 
      
     return (
-      <div className={styles['SingleCityForecast']} 
-            style = { props.color ? {backgroundColor:'#F5F5F5'} : {backgroundColor:'none'}}
+      <div className={props.color
+                ? styles['SingleCityForecast'] 
+                : [styles['SingleCityForecast'], styles['colored']].join(' ')}
             onClick={() => props.getActualClickedDataHandler(props.dt, props.singleCityName, props.databaseName)}>
-          <div className={styles['singleCityCountry']}>{props.singleCityCountry}: {props.singleCityName}</div>
+          <div style = { props.singleCityName ? {color: '#b89a6a'} : {color: 'red'}} className={styles['singleCityCountry']}>{props.singleCityCountry}: {props.singleCityName}</div>
           <div className={styles['singleDate']}>📆 {props.dt_txt.substr(0, 16)}</div>
           <div className={styles['singleTemperature']}>🌡temp {Math.ceil(props.temperature)}°C</div>
           <div className={styles['singleConditionID']}>{translatedConditionID}</div>

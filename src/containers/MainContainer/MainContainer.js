@@ -11,8 +11,8 @@ import CumulativeForecast from '../../components/CumulativeForecast/CumulativeFo
       <div className={styles['MainContainer']}>
           <CumulativeForecast/>
       </div>
-    );
+    )
   }
 
 
-export default mainContainer;
+export default mainContainer

@@ -20,7 +20,7 @@
 /*    background-color: orange;*/
     padding: .5em;
     font-weight: bolder;
-    color: #b89a6a;
+    
 }
 
 
@@ -38,4 +38,8 @@
 .singleConditionID {
 /*    background-color: darkorange;*/
     padding: .5em
+}
+
+.colored {
+    background-color: #F5F5F5;
 }
