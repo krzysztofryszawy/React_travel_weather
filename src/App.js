@@ -4,13 +4,27 @@ import MainContainer from './containers/MainContainer/MainContainer'
 import HeaderInfo from './components/HeaderInfo/HeaderInfo'
 
 class App extends Component {
+
     
-
-
-    render() {
+    state = {
+        
+    }
+    
+    optimist = () => {
+        
+    }
+    
+    
+    refresh = () => {
+        this.forceUpdate()
+    }
+    
+    render(props) {
         return (
           <div className={styles['App']}>
-            <HeaderInfo/>
+            <HeaderInfo
+                refresh={this.refresh}
+                optimist={this.optimist}/>
             <MainContainer/>
           </div>
         );
