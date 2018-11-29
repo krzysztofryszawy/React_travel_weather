@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styles from './CumulativeForecast.module.css'
 import SingleCityForecast from './SingleCityForecast/SingleCityForecast'
+import Tutorial from '../Tutorial/Tutorial'
 import Spinner from '../UI/Spinner/Spinner'
 import Backdrop from '../UI/Backdrop/Backdrop'
 
@@ -13,7 +14,7 @@ class cumulativeForecast extends Component {
 // conditional check if there are previous data or should start with new database
         if (localStorage.getItem('StateInsideStorage')) {
             this.loadStateFromLocalstorage()
-            console.log('wczytuję dane z LocalStorage')} 
+            console.log('available data in LocalStorage')} 
         else {
             this.getSingleCityDatabase(this.state.cityName)
                 .then(() => this.setState({loading:false}))
@@ -30,12 +31,13 @@ class cumulativeForecast extends Component {
         listOfDatabaseNames: [],
         indexCities: 0,
         colored: false,
+        watchedTutorial: false,
     }
 
 
 //saving data to localstorage
     saveStateToLocalstorage = () => {
-        const stateToLocalstorage = {listOfDatabaseNames: this.state.listOfDatabaseNames, indexCities: this.state.indexCities}
+        const stateToLocalstorage = {listOfDatabaseNames: this.state.listOfDatabaseNames, indexCities: this.state.indexCities, watchedTutorial: this.state.watchedTutorial}
         localStorage.setItem('StateInsideStorage', JSON.stringify(stateToLocalstorage));
     }
 
@@ -43,7 +45,7 @@ class cumulativeForecast extends Component {
     loadStateFromLocalstorage = () => {
         const retrievedObject1 = localStorage.getItem('StateInsideStorage');
         let result1 = (JSON.parse(retrievedObject1)); 
-        this.setState({listOfDatabaseNames: result1.listOfDatabaseNames},() => this.setStateFromLocalstorage())        
+        this.setState({listOfDatabaseNames: result1.listOfDatabaseNames, watchedTutorial: result1.watchedTutorial},() => this.setStateFromLocalstorage())        
     }
         
     setStateFromLocalstorage = () => {
@@ -150,7 +152,6 @@ let weatherURL = `http://api.openweathermap.org/data/2.5/forecast?q=${cityName_p
                 if (el.startDate < this.state.clickedCityData)
                     return el.startDate < this.state.clickedCityData
         })
-//console.log(clearedDatabaseNames)
         this.setState({listOfDatabaseNames: clearedDatabaseNames})
         
                 this.setState({cityName: this.state.tempCityName, backdrop: false}, () => this.getSingleCityDatabase(this.state.cityName)
@@ -161,15 +162,20 @@ let weatherURL = `http://api.openweathermap.org/data/2.5/forecast?q=${cityName_p
     }
 
     
+    resetLocalstorage = () => {
+        localStorage.clear('StateInsideStorage')
+    }
     
-    
+    closeTutorialHandler = () => {
+        this.setState({watchedTutorial: true})
+    }
         
         render () {
             
-            let inputContent = <div>
-                                    <label>PODAJ MIASTO</label>
+            let inputContent = <div className={styles['inputContent']}>
+                                    <label>CITY NAME: </label>
                                     <input name="cityNameInput" type="text" onChange={this.changeInputState}/>
-                                    <button onClick={this.acceptInputState}>ZATWIERDŹ</button>
+                                    <button className={styles['confirmCityButton']} onClick={this.acceptInputState}>ADD CITY 🌍 </button>
                                 </div>
 
             if (this.state.loading) return <Spinner/>
@@ -177,23 +183,21 @@ let weatherURL = `http://api.openweathermap.org/data/2.5/forecast?q=${cityName_p
             
             
             
-// experimental
+// experimental, scheduled for refactoring
 //proceed futher if there all initial databases are loaded
             let tempDB = this.state.listOfDatabaseNames.map(el =>     
                 {return el.databaseName})
             //console.log(tempDB)
-
             let tempDB2 = tempDB.map(el => 
                         {if (this.state[el]) return el})
             //console.log(tempDB2)
-
             let tempDB3 = tempDB2.every(el => 
                         {return el})   
             //console.log(tempDB3)
-
             if (!tempDB3) return <Spinner/>
 
-            
+            const tutorial = <Tutorial
+                                closeTutorial={this.closeTutorialHandler}/>
 
     
             let commonDatabase = this.state.listOfDatabaseNames.map(singleCityElement => {
@@ -236,7 +240,12 @@ let weatherURL = `http://api.openweathermap.org/data/2.5/forecast?q=${cityName_p
                         changeInputState={this.changeInputState}>
                         {inputContent}
                     </Backdrop>
-                    {commonDatabase}          
+                    {this.state.watchedTutorial
+                        ? commonDatabase 
+                        : tutorial}
+                    {localStorage.getItem('StateInsideStorage')
+                        ? <button className={styles['clearButton']} onClick={this.resetLocalstorage}> ⚠️ CLEAR LOCALSTORAGE</button>
+                        : null}
                 </div>    
             )
         }

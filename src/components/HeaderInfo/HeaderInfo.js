@@ -3,22 +3,14 @@ import styles from './HeaderInfo.module.css'
 
 
 const headerInfo = (props) => {
-    
-    
-    const resetLocalstorage = () => {
-        localStorage.clear('StateInsideStorage')
-        props.refresh()
-    }
+
     
     return (
     
     <div className={styles['HeaderInfo']}>
-       <div style={{fontSize: '1.3em'}}> ⛅ TRAVEL WEATHER </div>
-       <div style={{fontSize: '.7em'}}> 
-           <button onClick={resetLocalstorage}>CLEAR LOCALSTORAGE</button> 
-           <button onClick={''}>OPTIMISTIC</button> 
-           <button onClick={''}>NORMAL</button> 
-           <button onClick={''}>PESSIMISTIC</button> 
+       <div style={{fontSize: '1.3em'}}> ⛅ TRAVEL WEATHER <span style={{fontSize: '.3em'}}>alpha ☕</span> </div>
+       <div style={{fontSize: '.5em'}}> 
+        Don't Let the Weather Take You by Surprise! 💼 
        </div>
     </div>
     

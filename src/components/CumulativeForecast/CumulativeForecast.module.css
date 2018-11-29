@@ -3,3 +3,33 @@
     padding: 1em;
     
 }
+
+.confirmCityButton {
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin: 1em;
+    background-color: orangered;
+    color: white;
+    border: 1px dashed gray;
+    padding: .5em;
+    border-radius: 5px
+}
+
+.inputContent {
+    background-color:rgba(255, 255, 255, 0.9);
+    padding: 2em;
+    border-radius: 15px
+}
+
+.clearButton {
+    border: none; 
+    cursor: pointer;  
+    outline: none; 
+    background-color: orangered; 
+    color: white; 
+    border: 1px dashed gray; 
+    margin-top: 2em;
+    padding: .5em;
+    border-radius: 5px;
+}

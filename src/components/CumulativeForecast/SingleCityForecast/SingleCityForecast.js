@@ -9,9 +9,13 @@ import styles from './SingleCityForecast.module.css';
      
 //condition passed by API => translation on PL
     let translatedConditionID=null
-    if (props.conditionID <= 500) translatedConditionID = '☀ SŁONECZNIE'
-    if (props.conditionID > 500) translatedConditionID = '🌧 DESZCZOWO'
-
+    if (props.conditionID >= 200) translatedConditionID = '🌩 ⛈ Thunderstorm'
+    if (props.conditionID >= 300) translatedConditionID = '🌦 Drizzle'
+    if (props.conditionID >= 500) translatedConditionID = '🌧 Rain'
+    if (props.conditionID >= 600) translatedConditionID = '🌨 Snow'
+    if (props.conditionID >= 700) translatedConditionID = '🌫 Atmosphere'
+    if (props.conditionID == 800) translatedConditionID = '☀ Clear'
+    if (props.conditionID > 800) translatedConditionID = '☁ Clouds'
      
     return (
       <div className={props.color

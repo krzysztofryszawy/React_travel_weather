@@ -6,25 +6,14 @@ import HeaderInfo from './components/HeaderInfo/HeaderInfo'
 class App extends Component {
 
     
-    state = {
-        
+    state = {        
     }
-    
-    optimist = () => {
-        
-    }
-    
-    
-    refresh = () => {
-        this.forceUpdate()
-    }
+
     
     render(props) {
         return (
           <div className={styles['App']}>
-            <HeaderInfo
-                refresh={this.refresh}
-                optimist={this.optimist}/>
+            <HeaderInfo/>
             <MainContainer/>
           </div>
         );
