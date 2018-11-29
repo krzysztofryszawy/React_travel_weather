@@ -24,19 +24,19 @@ self.__precacheManifest = [
     "url": "/React_travel_weather/static/js/runtime~main.f1c34bc7.js"
   },
   {
-    "revision": "d49827bb410d141d38b6",
-    "url": "/React_travel_weather/static/js/main.d49827bb.chunk.js"
+    "revision": "ecaa1e6380d93edd61f8",
+    "url": "/React_travel_weather/static/js/main.ecaa1e63.chunk.js"
   },
   {
     "revision": "8cc93cbb6542f0cd6c12",
     "url": "/React_travel_weather/static/js/1.8cc93cbb.chunk.js"
   },
   {
-    "revision": "d49827bb410d141d38b6",
-    "url": "/React_travel_weather/static/css/main.e0bfc6b1.chunk.css"
+    "revision": "ecaa1e6380d93edd61f8",
+    "url": "/React_travel_weather/static/css/main.aa3c62d8.chunk.css"
   },
   {
-    "revision": "52422239361d1ebef8e9f09c336d8977",
+    "revision": "cce178dcfeab30f5545063d6f2aae74b",
     "url": "/React_travel_weather/index.html"
   }
 ];
