@@ -1,7 +1,7 @@
 {
   "main.css": "/React_travel_weather/static/css/main.e0bfc6b1.chunk.css",
-  "main.js": "/React_travel_weather/static/js/main.07b2a9e0.chunk.js",
-  "main.js.map": "/React_travel_weather/static/js/main.07b2a9e0.chunk.js.map",
+  "main.js": "/React_travel_weather/static/js/main.d49827bb.chunk.js",
+  "main.js.map": "/React_travel_weather/static/js/main.d49827bb.chunk.js.map",
   "static/js/1.8cc93cbb.chunk.js": "/React_travel_weather/static/js/1.8cc93cbb.chunk.js",
   "static/js/1.8cc93cbb.chunk.js.map": "/React_travel_weather/static/js/1.8cc93cbb.chunk.js.map",
   "runtime~main.js": "/React_travel_weather/static/js/runtime~main.f1c34bc7.js",
@@ -13,6 +13,6 @@
   "static/media/tutorial_2.png": "/React_travel_weather/static/media/tutorial_2.98219f71.png",
   "static/css/main.e0bfc6b1.chunk.css.map": "/React_travel_weather/static/css/main.e0bfc6b1.chunk.css.map",
   "index.html": "/React_travel_weather/index.html",
-  "precache-manifest.7a0e58c4b727fef49e2bd53b67912d24.js": "/React_travel_weather/precache-manifest.7a0e58c4b727fef49e2bd53b67912d24.js",
+  "precache-manifest.527bc57e73eebba5e4c702cc90cfaba9.js": "/React_travel_weather/precache-manifest.527bc57e73eebba5e4c702cc90cfaba9.js",
   "service-worker.js": "/React_travel_weather/service-worker.js"
 }
